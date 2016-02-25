@@ -1,3 +1,3 @@
-# Open Source Student Assesment Framework
+# Open Source Student Assessment Framework
 
 Name subject to change. 
