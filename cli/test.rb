@@ -4,5 +4,7 @@ require './assess.rb'
 
 assert true
 assert false
+assert true
+assert false
 
 report
