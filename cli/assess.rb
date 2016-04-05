@@ -4,8 +4,8 @@ require "uri"
 @tests = 0
 @tests_failed = 0
 @tests_passed = 0 
-@name = "NO_NAME_PROVIDED"
-@assignment = -1
+@name = false
+@assignment = false
 @server_url = "http://localhost:5000/attempt"
 
 def assert statement
@@ -26,12 +26,20 @@ def assert statement
 end
 
 def report
-    uri = URI.parse(@server_url)
-    Net::HTTP.post_form(uri, {
-        "student" => @name,
-        "assignment" => @assignment,
-        "tests_passed" => @tests_passed,
-        "tests_failed" => @tests_failed
-    })
+    puts "Sending report to server"
+    if not @assignment
+        puts "Report not sent. @assignment must be set"
+    elsif not @name
+        puts "Report not sent. @name must be set"
+    else
+        uri = URI.parse(@server_url)
+        Net::HTTP.post_form(uri, {
+            "student" => @name,
+            "assignment" => @assignment,
+            "tests_passed" => @tests_passed,
+            "tests_failed" => @tests_failed
+        })
+        puts "Report sent"
+    end
 end
     

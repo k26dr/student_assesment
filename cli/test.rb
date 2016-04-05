@@ -1,5 +1,5 @@
 require './assess.rb'
-@assignment = 1
+@assignment = 5
 @name = "Kedar"
 
 assert true
