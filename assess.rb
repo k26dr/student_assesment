@@ -6,7 +6,7 @@ require "uri"
 @tests_passed = 0 
 @name = "NO_NAME_PROVIDED"
 @assignment = -1
-@server_url = "http://localhost:8000"
+@server_url = "http://localhost:5000/attempt"
 
 def assert statement
     # get line number of test
@@ -30,7 +30,8 @@ def report
     Net::HTTP.post_form(uri, {
         "student" => @name,
         "assignment" => @assignment,
-        "tests_passed" => @tests_passed
+        "tests_passed" => @tests_passed,
+        "tests_failed" => @tests_failed
     })
 end
     
