@@ -36,7 +36,7 @@ def save_attempt():
 def assignment(assignment_id):
     conn = sqlite3.connect('server.db')
     c = conn.cursor()
-    query = "SELECT student, assignment, MAX(tests_passed) AS max_tests_passed, tests_failed FROM attempts WHERE assignment=-1 GROUP BY student;"
+    query = "SELECT student, assignment, MAX(tests_passed) AS max_tests_passed, tests_failed FROM attempts WHERE assignment={0} GROUP BY student;".format(assignment_id)
     c.execute(query)
     result = []
     for tup in c.fetchall():
